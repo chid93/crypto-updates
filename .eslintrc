@@ -1,0 +1,49 @@
+{
+  "parser": "@babel/eslint-parser",
+  "extends": ["airbnb", "airbnb/hooks", "prettier"],
+  "env": {
+    "browser": true,
+    "es6": true,
+    "jest": true,
+    "node": true
+  },
+  "parserOptions": {
+    "requireConfigFile": false,
+    "babelOptions": {
+      "babelrc": false,
+      "configFile": false,
+      "presets": ["@babel/preset-react"]
+    },
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "rules": {
+    "arrow-body-style": [2, "as-needed"],
+    "class-methods-use-this": 1,
+    "import/extensions": 0,
+    "import/newline-after-import": 1,
+    "import/no-extraneous-dependencies": 1,
+    "no-self-assign": 1,
+    "prefer-object-spread": 2,
+    "react/button-has-type": 2,
+    "react/destructuring-assignment": 0,
+    "react/forbid-prop-types": 0,
+    "react/jsx-filename-extension": 0,
+    "react/jsx-fragments": 0,
+    "react/jsx-no-bind": 1,
+    "react/jsx-no-target-blank": 0,
+    "react/jsx-props-no-spreading": 0,
+    "react/prefer-stateless-function": 1,
+    "react/no-access-state-in-setstate": 2,
+    "react/no-array-index-key": 2,
+    "react/no-danger": 0,
+    "react/no-danger-with-children": 1,
+    "react/no-unescaped-entities": 1,
+    "react/react-in-jsx-scope": 0,
+    "react/require-extension": 0,
+    "react/require-default-props": 0,
+    "react/self-closing-comp": 2,
+    "react/static-property-placement": 0
+  }
+}
