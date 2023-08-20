@@ -79,7 +79,7 @@ function Summaries() {
   return (
     <div data-testid='SummaryItems'>
       {isError && <Toast severity='error' message={constants.defaultErrorMessage} />}
-      <Box sx={{ height: 600, width: '100%' }}>
+      <Box sx={{ height: '80vh', width: '100%' }}>
         <DataGrid
           getRowId={getRowId}
           rows={cryptoSummaries}
