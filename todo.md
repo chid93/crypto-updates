@@ -19,6 +19,7 @@
   - top losers?
   - top by mcap?
   - error boundary
+  - refresh icon?
 - &#9744; progressive web app
 - &#9744; header
   - Search tab to find details on specific currency (desktop/mobile) - (ctrl + k)
