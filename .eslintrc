@@ -1,6 +1,12 @@
 {
-  "parser": "@babel/eslint-parser",
-  "extends": ["airbnb", "airbnb/hooks", "prettier"],
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "airbnb",
+    "airbnb/hooks",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/typescript",
+    "prettier"
+  ],
   "env": {
     "browser": true,
     "es6": true,
@@ -9,15 +15,13 @@
   },
   "parserOptions": {
     "requireConfigFile": false,
-    "babelOptions": {
-      "babelrc": false,
-      "configFile": false,
-      "presets": ["@babel/preset-react"]
-    },
+    "ecmaVersion": 2020,
     "ecmaFeatures": {
       "jsx": true
-    }
+    },
+    "sourceType": "module"
   },
+  "plugins": ["@typescript-eslint"],
   "rules": {
     "arrow-body-style": [2, "as-needed"],
     "class-methods-use-this": 1,
