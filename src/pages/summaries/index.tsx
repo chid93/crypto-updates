@@ -82,7 +82,7 @@ function Summaries() {
   ];
 
   return (
-    <>
+    <div data-testid='SummaryItems'>
       {isError && <Toast severity='error' message={constants.defaultErrorMessage} />}
       <Box sx={{ height: 400, width: '100%' }}>
         <DataGrid
@@ -101,7 +101,7 @@ function Summaries() {
           loading={isLoading}
         />
       </Box>
-    </>
+    </div>
   );
 }
 
