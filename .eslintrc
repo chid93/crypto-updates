@@ -27,7 +27,7 @@
     "class-methods-use-this": 1,
     "import/extensions": 0,
     "import/newline-after-import": 1,
-    "import/no-extraneous-dependencies": 1,
+    "import/no-extraneous-dependencies": 0,
     "no-self-assign": 1,
     "prefer-object-spread": 2,
     "react/button-has-type": 2,
