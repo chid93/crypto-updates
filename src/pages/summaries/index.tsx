@@ -3,35 +3,23 @@ import { Box } from '@mui/material';
 import {
   DataGrid,
   GridColDef,
-  GridRowId,
   // GridValueGetterParams
 } from '@mui/x-data-grid';
 import type {} from '@mui/x-data-grid/themeAugmentation';
 import Toast from '../../components/toast';
-import * as constants from './constants';
-
-interface Summary {
-  symbol: GridRowId;
-  high: number;
-  low: number;
-  volume: number;
-  quoteVolume: number;
-  percentChange: number;
-  updatedAt: string;
-}
-
-type SummaryItems = Array<Summary>;
+import * as constants from '../../constants';
+import { ISummaryItem, SummaryItemsType } from '../../types/models/summary.model';
 
 function Summaries() {
-  const [cryptoSummaries, setCryptoSummaries] = useState<SummaryItems>([]);
+  const [cryptoSummaries, setCryptoSummaries] = useState<SummaryItemsType>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isError, setIsError] = useState<boolean>(false);
 
   useEffect(() => {
     setIsLoading(true);
     const fetchData = async () => {
-      const url = new URL(constants.SUMMARIES_API);
       try {
+        const url = new URL(constants.SUMMARIES_API);
         const response = await fetch(url);
         const jsonData = await response.json();
         setCryptoSummaries(jsonData);
@@ -43,7 +31,7 @@ function Summaries() {
     fetchData();
   }, []);
 
-  const getRowId = (row: Summary) => row.symbol;
+  const getRowId = (row: ISummaryItem) => row.symbol;
 
   const columns: GridColDef[] = [
     {
@@ -78,7 +66,7 @@ function Summaries() {
 
   return (
     <div data-testid='SummaryItems'>
-      {isError && <Toast severity='error' message={constants.defaultErrorMessage} />}
+      {isError && <Toast severity='error' message={constants.ERROR_MESSAGE} />}
       <Box sx={{ height: '80vh', width: '100%' }}>
         <DataGrid
           getRowId={getRowId}
