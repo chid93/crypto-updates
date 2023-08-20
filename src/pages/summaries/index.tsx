@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { Box } from '@mui/material';
 import {
   DataGrid,
@@ -6,30 +6,15 @@ import {
   // GridValueGetterParams
 } from '@mui/x-data-grid';
 import type {} from '@mui/x-data-grid/themeAugmentation';
-import Toast from '../../components/toast';
-import * as constants from '../../constants';
-import { ISummaryItem, SummaryItemsType } from '../../types/models/summary.model';
+// import Toast from '../../components/toast';
+// import * as constants from '../../constants';
+import { ISummaryItem, SummaryContextType } from '../../types/models/summary.model';
+import SummaryContext from '../../contexts/SummaryContext';
 
 function Summaries() {
-  const [cryptoSummaries, setCryptoSummaries] = useState<SummaryItemsType>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [isError, setIsError] = useState<boolean>(false);
-
-  useEffect(() => {
-    setIsLoading(true);
-    const fetchData = async () => {
-      try {
-        const url = new URL(constants.SUMMARIES_API);
-        const response = await fetch(url);
-        const jsonData = await response.json();
-        setCryptoSummaries(jsonData);
-      } catch (e) {
-        setIsError(true);
-      }
-      setIsLoading(false);
-    };
-    fetchData();
-  }, []);
+  const { summaryItems } = useContext(SummaryContext) as SummaryContextType;
+  // const [isLoading, setIsLoading] = useState<boolean>(false);
+  // const [isError, setIsError] = useState<boolean>(false);
 
   const getRowId = (row: ISummaryItem) => row.symbol;
 
@@ -66,11 +51,11 @@ function Summaries() {
 
   return (
     <div data-testid='SummaryItems'>
-      {isError && <Toast severity='error' message={constants.ERROR_MESSAGE} />}
+      {/* {isError && <Toast severity='error' message={constants.ERROR_MESSAGE} />} */}
       <Box sx={{ height: '80vh', width: '100%' }}>
         <DataGrid
           getRowId={getRowId}
-          rows={cryptoSummaries}
+          rows={summaryItems}
           columns={columns}
           initialState={{
             pagination: {
@@ -81,7 +66,7 @@ function Summaries() {
           }}
           pageSizeOptions={[20, 50, 100, 500]}
           disableRowSelectionOnClick
-          loading={isLoading}
+          // loading={isLoading}
         />
       </Box>
     </div>

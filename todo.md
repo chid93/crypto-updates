@@ -4,7 +4,7 @@
 - &#9744; Api
   - create httpserver
   - Websockets. Stream data.
-    - should update the summary at a regular interval
+    - should update the summary at a regular interval?
   - Authentication
     - for all rest calls
     - store creds securely
@@ -25,7 +25,7 @@
   - Search tab to find details on specific currency (desktop/mobile) - (ctrl + k)
     - Recent searches?
   - TDD
-- &#9744; footer
+- &#9745; footer
   - What should I place in the footer? Copyright stuff? ©2023
 - &#9744; performance
   - Analyze bundle

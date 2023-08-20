@@ -1,23 +1,24 @@
+import { useMemo, useState } from 'react';
+import { SummaryItemsType } from './types/models/summary.model';
 import './App.css';
-import { Box } from '@mui/material';
-import Summaries from './pages/summaries';
-import Header from './components/header';
-import Footer from './components/footer';
+import Page from './pages/page';
+import SummaryContext from './contexts/SummaryContext';
 
 function App() {
+  const [summaryItems, setSummaryItems] = useState<SummaryItemsType>([]);
+
+  const value = useMemo(
+    () => ({
+      summaryItems,
+      setSummaryItems,
+    }),
+    [summaryItems],
+  );
+
   return (
-    <Box
-      data-testid='App'
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        minHeight: '100vh',
-      }}
-    >
-      <Header />
-      <Summaries />
-      <Footer />
-    </Box>
+    <SummaryContext.Provider value={value}>
+      <Page />
+    </SummaryContext.Provider>
   );
 }
 

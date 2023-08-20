@@ -13,6 +13,8 @@ export interface ISummaryItem {
 export type SummaryItemsType = Array<ISummaryItem>;
 
 export interface SummaryContextType {
-  summaryItems: ISummaryItem[];
-  refresh: boolean;
+  summaryItems: SummaryItemsType;
+  setSummaryItems: React.Dispatch<React.SetStateAction<SummaryItemsType>>;
+  // isLoading: boolean;
+  // setLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }

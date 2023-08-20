@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import { InputBase } from '@mui/material';
 import { Search as SearchIcon } from '@mui/icons-material';
 import * as constants from '../../constants';
-import { ISummaryItem } from '../../types/models/summary.model';
+import SummaryContext from '../../contexts/SummaryContext';
+import { SummaryContextType } from '../../types/models/summary.model';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -48,39 +49,58 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 function SearchInput() {
-  const [cryptoSummary, setCryptoSummary] = useState<ISummaryItem>();
+  const { setSummaryItems } = useContext(SummaryContext) as SummaryContextType;
   const [searchText, setSearchText] = useState<string>('');
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [isError, setIsError] = useState<boolean>(false);
-  const [errorMessage, setErrorMessage] = useState<string>('');
+  // const [isLoading, setIsLoading] = useState<boolean>(false);
+  // const [isError, setIsError] = useState<boolean>(false);
+  // const [errorMessage, setErrorMessage] = useState<string>('');
 
   useEffect(() => {
-    setIsLoading(true);
+    // setIsLoading(true);
 
     let timerId: NodeJS.Timeout;
     const resetTimer = () => clearTimeout(timerId);
 
     if (searchText.length === 0) {
-      // refreshMarketSummaries();
-      return resetTimer;
+      const fetchData = async () => {
+        try {
+          const url = new URL(constants.SUMMARIES_API);
+          const response = await fetch(url);
+          const jsonData = await response.json();
+          if (!response.ok) {
+            throw new Error(jsonData?.code || constants.ERROR_MESSAGE);
+          } else {
+            setSummaryItems(jsonData);
+          }
+        } catch (e) {
+          // setIsError(true);
+          // setErrorMessage((e as Error).message);
+        }
+        // setIsLoading(false);
+      };
+      fetchData();
+    } else {
+      const fetchData = async () => {
+        try {
+          const url = new URL(constants.SUMMARY_API.replace(constants.MARKET_SYMBOL_PARAM, searchText));
+          const response = await fetch(url);
+          const jsonData = await response.json();
+          if (!response.ok) {
+            throw new Error(jsonData?.code || constants.ERROR_MESSAGE);
+          } else {
+            setSummaryItems([jsonData]);
+          }
+        } catch (e) {
+          // setIsError(true);
+          // setErrorMessage((e as Error).message);
+        }
+        // setIsLoading(false);
+      };
+      timerId = setTimeout(fetchData, constants.DEBOUNCE);
     }
 
-    const fetchData = async () => {
-      try {
-        const url = new URL(constants.SUMMARY_API.replace(constants.MARKET_SYMBOL_PARAM, searchText));
-        const response = await fetch(url);
-        const jsonData = await response.json();
-        setCryptoSummary(jsonData);
-      } catch (e) {
-        setIsError(true);
-        setErrorMessage((e as Error).message);
-      }
-      setIsLoading(false);
-    };
-
-    timerId = setTimeout(fetchData, constants.DEBOUNCE);
     return resetTimer;
-  }, [searchText]);
+  }, [searchText, setSummaryItems]);
 
   const handleChange = (event: React.ChangeEvent) => {
     setSearchText((event.target as HTMLInputElement).value);
