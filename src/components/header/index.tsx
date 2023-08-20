@@ -46,21 +46,23 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 function Header() {
   return (
-    <Box sx={{ flexGrow: 1 }} data-testid='Header'>
-      <AppBar position='static'>
-        <Toolbar>
-          <Typography variant='h6' noWrap component='div' sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}>
-            Crypto Market Updates
-          </Typography>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase placeholder='Search…' inputProps={{ 'aria-label': 'search' }} />
-          </Search>
-        </Toolbar>
-      </AppBar>
-    </Box>
+    <header data-testid='Header'>
+      <Box sx={{ flexGrow: 1 }}>
+        <AppBar position='static'>
+          <Toolbar>
+            <Typography variant='h6' noWrap component='div' sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}>
+              Crypto Market Updates
+            </Typography>
+            <Search>
+              <SearchIconWrapper>
+                <SearchIcon />
+              </SearchIconWrapper>
+              <StyledInputBase placeholder='Search…' inputProps={{ 'aria-label': 'search' }} />
+            </Search>
+          </Toolbar>
+        </AppBar>
+      </Box>
+    </header>
   );
 }
 

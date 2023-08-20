@@ -52,11 +52,6 @@ function Summaries() {
       width: 150,
     },
     {
-      field: 'Price/Approx',
-      headerName: 'First name',
-      width: 150,
-    },
-    {
       field: 'high',
       headerName: '24h High',
       width: 150,
@@ -84,7 +79,7 @@ function Summaries() {
   return (
     <div data-testid='SummaryItems'>
       {isError && <Toast severity='error' message={constants.defaultErrorMessage} />}
-      <Box sx={{ height: 400, width: '100%' }}>
+      <Box sx={{ height: 600, width: '100%' }}>
         <DataGrid
           getRowId={getRowId}
           rows={cryptoSummaries}
@@ -92,11 +87,11 @@ function Summaries() {
           initialState={{
             pagination: {
               paginationModel: {
-                pageSize: 10,
+                pageSize: 20,
               },
             },
           }}
-          pageSizeOptions={[10, 50, 100]}
+          pageSizeOptions={[20, 50, 100, 500]}
           disableRowSelectionOnClick
           loading={isLoading}
         />
