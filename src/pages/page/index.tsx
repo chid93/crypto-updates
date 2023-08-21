@@ -1,5 +1,5 @@
 import { Box } from '@mui/material';
-import Summaries from '../summaries';
+import SummaryGrid from '../../components/summary-grid';
 import Header from '../../components/header';
 import Footer from '../../components/footer';
 
@@ -14,7 +14,7 @@ function Page() {
       }}
     >
       <Header />
-      <Summaries />
+      <SummaryGrid />
       <Footer />
     </Box>
   );

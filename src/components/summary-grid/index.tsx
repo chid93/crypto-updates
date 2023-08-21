@@ -7,9 +7,9 @@ import {
 } from '@mui/x-data-grid';
 import type {} from '@mui/x-data-grid/themeAugmentation';
 import { ISummaryItem, SummaryContextType } from '../../types/models/summary.model';
-import SummaryContext from '../../contexts/SummaryContext';
+import { SummaryContext } from '../../contexts/SummaryContext';
 
-function Summaries() {
+function SummaryGrid() {
   const { summaryItems, isLoading } = useContext(SummaryContext) as SummaryContextType;
 
   const getRowId = (row: ISummaryItem) => row.symbol;
@@ -33,7 +33,7 @@ function Summaries() {
     {
       field: 'percentChange',
       headerName: '24h Change',
-      type: 'number',
+      // type: 'number',
       width: 150,
     },
     {
@@ -59,7 +59,7 @@ function Summaries() {
               },
             },
           }}
-          pageSizeOptions={[20, 50, 100, 500]}
+          pageSizeOptions={[20, 50, 100]}
           disableRowSelectionOnClick
           loading={isLoading}
         />
@@ -68,4 +68,4 @@ function Summaries() {
   );
 }
 
-export default Summaries;
+export default SummaryGrid;

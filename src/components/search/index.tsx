@@ -3,7 +3,7 @@ import { styled, alpha } from '@mui/material/styles';
 import { InputBase } from '@mui/material';
 import { Search as SearchIcon } from '@mui/icons-material';
 import * as constants from '../../constants';
-import SummaryContext from '../../contexts/SummaryContext';
+import { SummaryContext } from '../../contexts/SummaryContext';
 import { SummaryContextType } from '../../types/models/summary.model';
 
 const Search = styled('div')(({ theme }) => ({

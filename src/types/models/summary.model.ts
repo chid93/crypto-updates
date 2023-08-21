@@ -2,11 +2,11 @@ import { GridRowId } from '@mui/x-data-grid';
 
 export interface ISummaryItem {
   symbol: GridRowId;
-  high: number;
-  low: number;
-  volume: number;
-  quoteVolume: number;
-  percentChange: number;
+  high: string;
+  low: string;
+  volume: string;
+  quoteVolume: string;
+  percentChange?: string;
   updatedAt: string;
 }
 
