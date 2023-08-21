@@ -18,6 +18,7 @@
 - &#9744; docker build files
 - &#9744; backend health check and version info/pages
 - &#9744; Additional features?
+- &#9745; fix valueGetter format 0 value sort
 - &#9745; Display market summary for all currencies
   - pagination
 - &#9745; error handling

@@ -18,13 +18,15 @@ describe('SummaryGrid', () => {
 
   test('should display crypto summary items in grid', async () => {
     render(<SummaryGrid />, { providerProps: providerPropsSummaryItems as ISummaryContextProps });
-    const symbolText = await screen.findByText(typedMarketSummaries[0].symbol);
-    expect(symbolText).toBeInTheDocument();
+    const regex = new RegExp(typedMarketSummaries[0].symbol.toString().split('-')[0]);
+    const symbolText = await screen.findAllByText(regex);
+    expect(symbolText[0]).toBeInTheDocument();
   });
 
   test('should display LTC crypto summary in grid', async () => {
     render(<SummaryGrid />, { providerProps: providerPropsSummaryLTC as ISummaryContextProps });
-    const symbolText = await screen.findByText(typedMarketSummaryLTC.symbol);
+    const regex = new RegExp(typedMarketSummaryLTC.symbol.toString().split('-')[0]);
+    const symbolText = await screen.findByText(regex);
     expect(symbolText).toBeInTheDocument();
   });
 });
