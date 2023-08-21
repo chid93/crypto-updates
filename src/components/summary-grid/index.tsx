@@ -23,7 +23,8 @@ function SummaryGrid() {
     {
       field: 'symbol',
       headerName: 'Market',
-      width: 150,
+      minWidth: 140,
+      flex: 1,
       type: 'string',
       renderCell: ({ value }) => {
         const [name, market] = value.split('-');
@@ -40,21 +41,24 @@ function SummaryGrid() {
     {
       field: 'high',
       headerName: '24h High',
-      width: 150,
+      minWidth: 140,
+      flex: 1,
       type: 'number',
       renderCell: ({ row, value }) => formatHighLow({ row, value }),
     },
     {
       field: 'low',
       headerName: '24h Low',
-      width: 150,
+      minWidth: 140,
+      flex: 1,
       type: 'number',
       renderCell: ({ row, value }) => formatHighLow({ row, value }),
     },
     {
       field: 'percentChange',
       headerName: '24h Change',
-      width: 150,
+      minWidth: 140,
+      flex: 1,
       type: 'number',
       valueGetter: (params) => {
         if (!params.value) {
@@ -76,7 +80,8 @@ function SummaryGrid() {
     {
       field: 'quoteVolume',
       headerName: '24h Volume',
-      width: 150,
+      minWidth: 140,
+      flex: 1,
       type: 'number',
       valueFormatter: ({ value }) => formatCurrency(value),
     },
