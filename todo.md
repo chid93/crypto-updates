@@ -1,11 +1,6 @@
 ## Todo
 
-- &#9744; Documentation. Readme with screenshots, instructions to start the app and features.
-- &#9744; ErrorBoundary
-  - display color for percent change
-- &#9744; performance
-  - Analyze bundle
-  - Check for unnecessary loops
+- &#9744; Move up <Box /> component to page/index.tsx component
 - &#9744; change grid content to fill height of the page?
 - &#9744; Api
   - Websockets. Stream data.
@@ -17,12 +12,21 @@
 - &#9744; docker build files
 - &#9744; backend health check and version info/pages
 - &#9744; Additional features?
+  - ErrorBoundary
+- &#9745; Documentation. Readme with screenshots, instructions to start the app and features.
+- &#9745; Toast supports only error messages for now, informed decision.
+- &#9745; performance
+  - Analyze bundle
+    - Mui has tree shaking built in for named exports https://mui.com/material-ui/guides/minimizing-bundle-size/
+  - Check for unnecessary loops
+  - sx props works for most cases https://mui.com/system/getting-started/usage/#performance-tradeoffs
 - &#9745; move test utils to utils
 - &#9745; useFetch hook
 - &#9745; valueGetter methods for table
 - &#9745; fix valueGetter format 0 value sort
 - &#9745; Display market summary for all currencies
   - pagination
+  - display color for percent change
 - &#9745; error handling
   - maybe some logger?
 - &#9745; progressive web app
