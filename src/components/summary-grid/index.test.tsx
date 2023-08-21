@@ -1,4 +1,5 @@
 import { render, screen } from '../../utils/test-utils';
+import { formatChange } from '../../utils/formatter';
 import SummaryGrid from '.';
 import marketSummaries from './mocks/api/market_summaries.json';
 import marketSummaryLTC from './mocks/api/symbol_summary_ltc_btc.json';
@@ -28,5 +29,12 @@ describe('SummaryGrid', () => {
     const regex = new RegExp(typedMarketSummaryLTC.symbol.toString().split('-')[0]);
     const symbolText = await screen.findByText(regex);
     expect(symbolText).toBeInTheDocument();
+  });
+
+  test('should display formatted grid values', async () => {
+    render(<SummaryGrid />, { providerProps: providerPropsSummaryLTC as ISummaryContextProps });
+    const regex = new RegExp(formatChange(typedMarketSummaryLTC.percentChange || ''));
+    const percentChangeValue = await screen.findByText(regex);
+    expect(percentChangeValue).toBeInTheDocument();
   });
 });
