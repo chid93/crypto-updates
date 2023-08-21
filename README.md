@@ -1,5 +1,13 @@
 # Get crypto currency market updates with api.bittrex.com
 
+## Features
+- Context is used to share summary items between `Header` component and `SummaryGrid` component.
+- Debounces by 500ms to wait for the user to finishing typing in search input before triggering `/summary` api.
+- Cancels previous request if a new api request is initiated
+- Uses [Material UI](https://mui.com/) for styling and design.
+- Eslint and prettier linters in place
+- Typescript app
+
 ## Images
 
 - Desktop
@@ -11,6 +19,9 @@
 
 - Request cancellation to improve performance | Error toast message (displays at the bottom left corner)
   - ![image](https://github.com/chid93/crypto-updates/assets/9027740/babc5dc9-209e-43c3-8b99-7a6f5b5ed217)
+
+- Test coverage
+  - 
 
 ## Available Scripts
 
