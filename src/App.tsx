@@ -4,11 +4,9 @@ import './App.css';
 
 function App() {
   return (
-    <div data-testId='App'>
-      <SummaryContextWrapper>
-        <Page />
-      </SummaryContextWrapper>
-    </div>
+    <SummaryContextWrapper>
+      <Page />
+    </SummaryContextWrapper>
   );
 }
 
