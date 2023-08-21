@@ -1,7 +1,7 @@
 import { render, screen } from '../../test-utils';
 import Header from '.';
 
-describe('header', () => {
+describe('Header', () => {
   beforeEach(() => {
     render(<Header />);
   });

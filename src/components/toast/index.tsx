@@ -4,7 +4,7 @@ import * as constants from '../../constants';
 
 interface ToastProps {
   severity: AlertColor;
-  message: string;
+  message?: string;
 }
 
 function Toast({ severity, message }: ToastProps) {
@@ -19,7 +19,12 @@ function Toast({ severity, message }: ToastProps) {
   };
 
   return (
-    <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+    <Snackbar
+      open={open}
+      autoHideDuration={constants.TIMEOUT_AUTO_HIDE_DURATION}
+      onClose={handleClose}
+      data-testid='Toast'
+    >
       <Alert onClose={handleClose} severity={severity} sx={{ width: '100%' }}>
         {message === constants.MARKET_DOES_NOT_EXIST_CODE
           ? constants.MARKET_DOES_NOT_EXIST_ERROR_MESSAGE

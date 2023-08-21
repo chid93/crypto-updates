@@ -9,3 +9,5 @@ export const DEBOUNCE = 500;
 export const ERROR_MESSAGE = 'Something went wrong, please try again.';
 export const MARKET_DOES_NOT_EXIST_CODE = 'MARKET_DOES_NOT_EXIST';
 export const MARKET_DOES_NOT_EXIST_ERROR_MESSAGE = 'Unable to find the crypto currency.';
+
+export const TIMEOUT_AUTO_HIDE_DURATION = 500;

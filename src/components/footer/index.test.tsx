@@ -1,7 +1,7 @@
 import { render, screen } from '../../test-utils';
 import Footer from '.';
 
-describe('header', () => {
+describe('Footer', () => {
   beforeEach(() => {
     render(<Footer />);
   });
