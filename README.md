@@ -1,6 +1,27 @@
-# Getting Started with Create React App
+# Get crypto currency market updates with api.bittrex.com
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Features
+- Context is used to share summary items between `Header` component and `SummaryGrid` component.
+- Debounces by 500ms to wait for the user to finishing typing in search input before triggering `/summary` api.
+- Cancels previous request if a new api request is initiated
+- Uses [Material UI](https://mui.com/) for styling and design.
+- Eslint and prettier linters in place
+- Typescript app
+
+## Images
+
+- Desktop
+  - ![image](https://github.com/chid93/crypto-updates/assets/9027740/ca99c607-cce3-4dd4-9900-aa3256f14a6a)
+  - ![image](https://github.com/chid93/crypto-updates/assets/9027740/89b51d5e-4213-44c2-ab12-1ad14938e496)
+
+- Mobile
+  - ![image](https://github.com/chid93/crypto-updates/assets/9027740/ddf5f142-2c74-416e-af42-ad0def53892f)
+
+- Request cancellation to improve performance | Error toast message (displays at the bottom left corner)
+  - ![image](https://github.com/chid93/crypto-updates/assets/9027740/babc5dc9-209e-43c3-8b99-7a6f5b5ed217)
+
+- Test coverage
+  - 
 
 ## Available Scripts
 
@@ -11,36 +32,14 @@ In the project directory, you can run:
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### `npm run test:coverage`
+
+Prints file coverage for all the files.
 
 ### `npm run build`
 
 Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
