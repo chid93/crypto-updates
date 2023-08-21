@@ -2,7 +2,7 @@ import { rest } from 'msw';
 import userEvent from '@testing-library/user-event';
 // eslint-disable-next-line import/no-unresolved
 import { UserEvent } from '@testing-library/user-event/dist/types/setup/setup';
-import { render, screen } from '../../test-utils';
+import { render, screen } from '../../utils/test-utils';
 import Page from '.';
 import * as constants from '../../constants';
 import mockServer from './mocks/server';

@@ -1,6 +1,6 @@
 import { render, RenderOptions } from '@testing-library/react';
 import { ReactElement } from 'react';
-import SummaryContextWrapper, { ISummaryContextProps } from '../contexts/SummaryContext';
+import SummaryContextWrapper, { ISummaryContextProps } from '../../contexts/SummaryContext';
 
 interface ICustomRenderOptions {
   providerProps?: ISummaryContextProps;

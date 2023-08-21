@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '../../test-utils';
+import { render, screen, waitFor } from '../../utils/test-utils';
 import Toast from '.';
 import toastErrorProps from './mocks/props';
 import * as constants from '../../constants';

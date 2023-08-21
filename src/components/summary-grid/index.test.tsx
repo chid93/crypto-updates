@@ -1,4 +1,4 @@
-import { render, screen } from '../../test-utils';
+import { render, screen } from '../../utils/test-utils';
 import SummaryGrid from '.';
 import marketSummaries from './mocks/api/market_summaries.json';
 import marketSummaryLTC from './mocks/api/symbol_summary_ltc_btc.json';
