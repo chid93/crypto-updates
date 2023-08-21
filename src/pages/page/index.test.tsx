@@ -8,8 +8,11 @@ import * as constants from '../../constants';
 import mockServer from './mocks/server';
 import marketSummaries from './mocks/api/market_summaries.json';
 import marketSummaryLTC from './mocks/api/symbol_summary_ltc_btc.json';
+import { ISummaryItem, SummaryItemsType } from '../../types/models/summary.model';
 
 describe('Page', () => {
+  const typedMarketSummaries = marketSummaries as SummaryItemsType;
+  const typedMarketSummaryLTC = marketSummaryLTC as ISummaryItem;
   const server = mockServer();
   let user: UserEvent;
   beforeEach(() => {
@@ -23,7 +26,7 @@ describe('Page', () => {
   });
 
   test('should display summary grid on api success', async () => {
-    const symbolText = await screen.findByText(marketSummaries[0].symbol);
+    const symbolText = await screen.findByText(typedMarketSummaries[0].symbol);
     expect(symbolText).toBeInTheDocument();
   });
 
@@ -32,8 +35,8 @@ describe('Page', () => {
     expect(searchInput).toBeInTheDocument();
 
     // search for specific crypto market
-    await user.type(searchInput, marketSummaryLTC.symbol);
-    const High24hText = await screen.findByText(marketSummaryLTC.high);
+    await user.type(searchInput, typedMarketSummaryLTC.symbol as string);
+    const High24hText = await screen.findByText(typedMarketSummaryLTC.high);
     expect(High24hText).toBeInTheDocument();
 
     // assert if 1 row is displayed in grid
@@ -41,11 +44,11 @@ describe('Page', () => {
 
     // clear search input to fetch summaries
     await user.clear(searchInput);
-    const symbolText = await screen.findByText(marketSummaries[0].symbol);
+    const symbolText = await screen.findByText(typedMarketSummaries[0].symbol);
     expect(symbolText).toBeInTheDocument();
 
     // assert if 20 rows text is displayed in grid
-    const regex = new RegExp(`20 of ${marketSummaries.length}`);
+    const regex = new RegExp(`20 of ${typedMarketSummaries.length}`);
     expect(screen.getByText(regex)).toBeInTheDocument();
   });
 
