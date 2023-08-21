@@ -1,12 +1,13 @@
 ## Todo
 
-- &#9744; useFetch hook
+- &#9744; move test utils to utils
 - &#9744; Documentation. Readme with screenshots, instructions to start the app and features.
 - &#9744; ErrorBoundary
   - display color for percent change
 - &#9744; performance
   - Analyze bundle
   - Check for unnecessary loops
+- &#9744; change grid content to fill height of the page?
 - &#9744; Api
   - Websockets. Stream data.
     - should update the summary at a regular interval?
@@ -17,6 +18,7 @@
 - &#9744; docker build files
 - &#9744; backend health check and version info/pages
 - &#9744; Additional features?
+- &#9745; useFetch hook
 - &#9745; valueGetter methods for table
 - &#9745; fix valueGetter format 0 value sort
 - &#9745; Display market summary for all currencies

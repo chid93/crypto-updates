@@ -1,10 +1,9 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import { InputBase } from '@mui/material';
 import { Search as SearchIcon } from '@mui/icons-material';
 import * as constants from '../../constants';
-import { SummaryContext } from '../../contexts/SummaryContext';
-import { SummaryContextType } from '../../types/models/summary.model';
+import useFetchSummaryItems from '../../hooks/useFetchSummaryItems';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -49,57 +48,24 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 function SearchInput() {
-  const { setSummaryItems, setIsLoading, setError } = useContext(SummaryContext) as SummaryContextType;
+  const [url, setUrl] = useState<URL | string>('');
   const [searchText, setSearchText] = useState<string>('');
+
+  useFetchSummaryItems(url);
 
   useEffect(() => {
     let timerId: NodeJS.Timeout;
     const resetTimer = () => clearTimeout(timerId);
-
     if (searchText.length === 0) {
-      const fetchData = async () => {
-        setIsLoading(true);
-        try {
-          const url = new URL(constants.SUMMARIES_API);
-          const response = await fetch(url);
-          const jsonData = await response.json();
-          if (!response.ok) {
-            throw new Error(jsonData?.code || constants.ERROR_MESSAGE);
-          } else {
-            setSummaryItems(jsonData);
-            setError(null);
-          }
-        } catch (e) {
-          setSummaryItems([]);
-          setError(e as Error | null);
-        }
-        setIsLoading(false);
-      };
-      fetchData();
+      setUrl(new URL(constants.SUMMARIES_API));
     } else {
-      const fetchData = async () => {
-        setIsLoading(true);
-        try {
-          const url = new URL(constants.SUMMARY_API.replace(constants.MARKET_SYMBOL_PARAM, searchText));
-          const response = await fetch(url);
-          const jsonData = await response.json();
-          if (!response.ok) {
-            throw new Error(jsonData?.code || constants.ERROR_MESSAGE);
-          } else {
-            setSummaryItems([jsonData]);
-            setError(null);
-          }
-        } catch (e) {
-          setSummaryItems([]);
-          setError(e as Error | null);
-        }
-        setIsLoading(false);
-      };
-      timerId = setTimeout(fetchData, constants.DEBOUNCE);
+      timerId = setTimeout(
+        () => setUrl(new URL(constants.SUMMARY_API.replace(constants.MARKET_SYMBOL_PARAM, searchText))),
+        constants.DEBOUNCE,
+      );
     }
-
     return resetTimer;
-  }, [searchText, setSummaryItems, setIsLoading, setError]);
+  }, [searchText]);
 
   const handleChange = (event: React.ChangeEvent) => {
     setSearchText((event.target as HTMLInputElement).value);
