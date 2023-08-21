@@ -8,7 +8,7 @@
 - Eslint and prettier linters in place
 - Typescript app
 
-## Images
+## Screenshots
 
 - Desktop
   - ![image](https://github.com/chid93/crypto-updates/assets/9027740/ca99c607-cce3-4dd4-9900-aa3256f14a6a)
