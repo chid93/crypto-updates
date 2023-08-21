@@ -6,7 +6,7 @@ import Footer from '../../components/footer';
 function Page() {
   return (
     <Box
-      data-testid='App'
+      data-testid='Page'
       sx={{
         display: 'flex',
         flexDirection: 'column',
