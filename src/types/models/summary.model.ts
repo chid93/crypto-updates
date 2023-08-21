@@ -15,6 +15,8 @@ export type SummaryItemsType = Array<ISummaryItem>;
 export interface SummaryContextType {
   summaryItems: SummaryItemsType;
   setSummaryItems: React.Dispatch<React.SetStateAction<SummaryItemsType>>;
-  // isLoading: boolean;
-  // setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  isLoading: boolean;
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  error: Error | null;
+  setError: React.Dispatch<React.SetStateAction<Error | null>>;
 }

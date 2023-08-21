@@ -49,20 +49,16 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 function SearchInput() {
-  const { setSummaryItems } = useContext(SummaryContext) as SummaryContextType;
+  const { setSummaryItems, setIsLoading, setError } = useContext(SummaryContext) as SummaryContextType;
   const [searchText, setSearchText] = useState<string>('');
-  // const [isLoading, setIsLoading] = useState<boolean>(false);
-  // const [isError, setIsError] = useState<boolean>(false);
-  // const [errorMessage, setErrorMessage] = useState<string>('');
 
   useEffect(() => {
-    // setIsLoading(true);
-
     let timerId: NodeJS.Timeout;
     const resetTimer = () => clearTimeout(timerId);
 
     if (searchText.length === 0) {
       const fetchData = async () => {
+        setIsLoading(true);
         try {
           const url = new URL(constants.SUMMARIES_API);
           const response = await fetch(url);
@@ -71,16 +67,18 @@ function SearchInput() {
             throw new Error(jsonData?.code || constants.ERROR_MESSAGE);
           } else {
             setSummaryItems(jsonData);
+            setError(null);
           }
         } catch (e) {
-          // setIsError(true);
-          // setErrorMessage((e as Error).message);
+          setSummaryItems([]);
+          setError(e as Error | null);
         }
-        // setIsLoading(false);
+        setIsLoading(false);
       };
       fetchData();
     } else {
       const fetchData = async () => {
+        setIsLoading(true);
         try {
           const url = new URL(constants.SUMMARY_API.replace(constants.MARKET_SYMBOL_PARAM, searchText));
           const response = await fetch(url);
@@ -89,18 +87,19 @@ function SearchInput() {
             throw new Error(jsonData?.code || constants.ERROR_MESSAGE);
           } else {
             setSummaryItems([jsonData]);
+            setError(null);
           }
         } catch (e) {
-          // setIsError(true);
-          // setErrorMessage((e as Error).message);
+          setSummaryItems([]);
+          setError(e as Error | null);
         }
-        // setIsLoading(false);
+        setIsLoading(false);
       };
       timerId = setTimeout(fetchData, constants.DEBOUNCE);
     }
 
     return resetTimer;
-  }, [searchText, setSummaryItems]);
+  }, [searchText, setSummaryItems, setIsLoading, setError]);
 
   const handleChange = (event: React.ChangeEvent) => {
     setSearchText((event.target as HTMLInputElement).value);

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Alert, Snackbar, AlertColor } from '@mui/material';
+import * as constants from '../../constants';
 
 interface ToastProps {
   severity: AlertColor;
@@ -20,7 +21,9 @@ function Toast({ severity, message }: ToastProps) {
   return (
     <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
       <Alert onClose={handleClose} severity={severity} sx={{ width: '100%' }}>
-        {message}
+        {message === constants.MARKET_DOES_NOT_EXIST_CODE
+          ? constants.MARKET_DOES_NOT_EXIST_ERROR_MESSAGE
+          : constants.ERROR_MESSAGE}
       </Alert>
     </Snackbar>
   );

@@ -6,15 +6,11 @@ import {
   // GridValueGetterParams
 } from '@mui/x-data-grid';
 import type {} from '@mui/x-data-grid/themeAugmentation';
-// import Toast from '../../components/toast';
-// import * as constants from '../../constants';
 import { ISummaryItem, SummaryContextType } from '../../types/models/summary.model';
 import SummaryContext from '../../contexts/SummaryContext';
 
 function Summaries() {
-  const { summaryItems } = useContext(SummaryContext) as SummaryContextType;
-  // const [isLoading, setIsLoading] = useState<boolean>(false);
-  // const [isError, setIsError] = useState<boolean>(false);
+  const { summaryItems, isLoading } = useContext(SummaryContext) as SummaryContextType;
 
   const getRowId = (row: ISummaryItem) => row.symbol;
 
@@ -51,7 +47,6 @@ function Summaries() {
 
   return (
     <div data-testid='SummaryItems'>
-      {/* {isError && <Toast severity='error' message={constants.ERROR_MESSAGE} />} */}
       <Box sx={{ height: '80vh', width: '100%' }}>
         <DataGrid
           getRowId={getRowId}
@@ -66,7 +61,7 @@ function Summaries() {
           }}
           pageSizeOptions={[20, 50, 100, 500]}
           disableRowSelectionOnClick
-          // loading={isLoading}
+          loading={isLoading}
         />
       </Box>
     </div>
