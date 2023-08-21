@@ -1,7 +1,7 @@
 # Get crypto currency market updates with api.bittrex.com
 
 ## Features
-- Context is used to share summary items between `Header` component and `SummaryGrid` component.
+- Context is used to share data between components like `Header`, `SummaryGrid` and `Page`.
 - Debounces by 500ms to wait for the user to finishing typing in search input before triggering `/summary` api.
 - Cancels previous request if a new api request is initiated
 - Uses [Material UI](https://mui.com/) for styling and design.
