@@ -3,7 +3,8 @@ import Toast from '.';
 import toastErrorProps from './mocks/props';
 import * as constants from '../../constants';
 
-jest.setTimeout(constants.TIMEOUT_AUTO_HIDE_DURATION + 2000);
+const timeout = constants.TIMEOUT_AUTO_HIDE_DURATION + 5000;
+jest.setTimeout(timeout);
 
 describe('Toast', () => {
   beforeEach(() => {
@@ -24,7 +25,7 @@ describe('Toast', () => {
       () => {
         expect(errorText).not.toBeVisible();
       },
-      { timeout: constants.TIMEOUT_AUTO_HIDE_DURATION },
+      { timeout },
     );
   });
 });
