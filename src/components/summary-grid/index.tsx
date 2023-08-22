@@ -88,25 +88,23 @@ function SummaryGrid() {
   ];
 
   return (
-    <div data-testid='SummaryItems'>
-      <Box sx={{ height: '80vh', width: '100%' }}>
-        <DataGrid
-          getRowId={getRowId}
-          rows={summaryItems}
-          columns={columns}
-          initialState={{
-            pagination: {
-              paginationModel: {
-                pageSize: 20,
-              },
+    <Box sx={{ height: '50vh', width: '100%' }} flex='auto' data-testid='SummaryItems'>
+      <DataGrid
+        getRowId={getRowId}
+        rows={summaryItems}
+        columns={columns}
+        initialState={{
+          pagination: {
+            paginationModel: {
+              pageSize: 20,
             },
-          }}
-          pageSizeOptions={[20, 50, 100]}
-          disableRowSelectionOnClick
-          loading={isLoading}
-        />
-      </Box>
-    </div>
+          },
+        }}
+        pageSizeOptions={[20, 50, 100]}
+        disableRowSelectionOnClick
+        loading={isLoading}
+      />
+    </Box>
   );
 }
 

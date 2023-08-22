@@ -1,7 +1,5 @@
 ## Todo
 
-- &#9744; Move up <Box /> component to page/index.tsx component
-- &#9744; change grid content to fill height of the page?
 - &#9744; Api
   - Websockets. Stream data.
     - should update the summary at a regular interval?
@@ -13,6 +11,8 @@
 - &#9744; backend health check and version info/pages
 - &#9744; Additional features?
   - ErrorBoundary
+- &#9745; change grid content to fill height of the page?
+- &#9745; Move up <Box /> component to page/index.tsx component - not required, keeping in the component makes more sense
 - &#9745; Documentation. Readme with screenshots, instructions to start the app and features.
 - &#9745; Toast supports only error messages for now, informed decision.
 - &#9745; performance
