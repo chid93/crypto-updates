@@ -23,15 +23,21 @@ function SummaryGrid() {
     {
       field: 'symbol',
       headerName: 'Market',
-      minWidth: 140,
+      maxWidth: 120,
       flex: 1,
       type: 'string',
       renderCell: ({ value }) => {
         const [name, market] = value.split('-');
         return (
           <>
-            {name}
-            <Avatar sx={{ bgcolor: grey[500], fontSize: '14px', marginLeft: '4px' }} variant='square'>
+            <div 
+              style={{flexGrow: 1}}
+            >{name}</div>
+            <Avatar sx={{ 
+              bgcolor: grey[500], 
+              fontSize: '14px', 
+              // marginLeft: 'auto' 
+            }} variant='square'>
               {market}
             </Avatar>
           </>
