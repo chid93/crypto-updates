@@ -1,5 +1,6 @@
 import { rest } from 'msw';
 import userEvent from '@testing-library/user-event';
+import { act } from '@testing-library/react';
 // eslint-disable-next-line import/no-unresolved
 import { UserEvent } from '@testing-library/user-event/dist/types/setup/setup';
 import { render, screen } from '../../utils/test-utils';
@@ -14,29 +15,23 @@ describe('Page', () => {
   const typedMarketSummaries = marketSummaries as SummaryItemsType;
   const typedMarketSummaryLTC = marketSummaryLTC as ISummaryItem;
   const server = mockServer();
-  let user: UserEvent;
-  beforeEach(() => {
-    user = userEvent.setup();
+  test('should display all/single summary grid items', async () => {
+    const user: UserEvent = userEvent.setup();
     render(<Page />);
-  });
-
-  test('should mount', () => {
     const PageElement = screen.getByTestId('Page');
     expect(PageElement).toBeInTheDocument();
-  });
 
-  test('should display summary grid on api success', async () => {
     const regex = new RegExp(typedMarketSummaries[0].symbol.toString().split('-')[0]);
     const symbolText = await screen.findAllByText(regex);
     expect(symbolText[0]).toBeInTheDocument();
-  });
 
-  test('should display LTC crypto on search input', async () => {
     const searchInput = screen.getByLabelText('search');
     expect(searchInput).toBeInTheDocument();
 
     // search for specific crypto market
-    await user.type(searchInput, typedMarketSummaryLTC.symbol as string);
+    await act(
+      async () => { await user.type(searchInput, typedMarketSummaryLTC.symbol as string); },
+    );
     const ltcRegex = new RegExp(typedMarketSummaryLTC.symbol.toString().split('-')[0]);
     const symbolTextLtc = await screen.findByText(ltcRegex);
     expect(symbolTextLtc).toBeInTheDocument();
@@ -45,10 +40,12 @@ describe('Page', () => {
     expect(screen.getByText(/1 of 1/)).toBeInTheDocument();
 
     // clear search input to fetch summaries
-    await user.clear(searchInput);
+    await act(
+      async () => {await user.clear(searchInput);},
+    );
     const firstSummaryItemRegex = new RegExp(typedMarketSummaries[0].symbol.toString().split('-')[0]);
-    const symbolText = await screen.findAllByText(firstSummaryItemRegex);
-    expect(symbolText[0]).toBeInTheDocument();
+    const symbolTextFirstSummaryItemRegex = await screen.findAllByText(firstSummaryItemRegex);
+    expect(symbolTextFirstSummaryItemRegex[0]).toBeInTheDocument();
 
     // assert if 20 rows text is displayed in grid
     const countRegex = new RegExp(`20 of ${typedMarketSummaries.length}`);
@@ -56,6 +53,7 @@ describe('Page', () => {
   });
 
   test('should display error notification on api error', async () => {
+    render(<Page />);
     server.use(rest.get(constants.SUMMARIES_API, (req, res, ctx) => res.once(ctx.status(500))));
     const errorMessage = await screen.findByText(constants.ERROR_MESSAGE);
     expect(errorMessage).toBeInTheDocument();
