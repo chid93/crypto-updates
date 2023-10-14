@@ -21,8 +21,7 @@
   - ![image](https://github.com/chid93/crypto-updates/assets/9027740/100f2a72-8570-42c0-90e1-eb3130896c48)
 
 - Test coverage
-  - ![image](https://github.com/chid93/crypto-updates/assets/9027740/06430756-d5b0-4793-9e07-0e3c9c580d52)
-
+  - ![image](https://github.com/chid93/crypto-updates/assets/9027740/84a109c6-10f5-4832-9612-dba6581f4b4d)
 
 ## Available Scripts
 
