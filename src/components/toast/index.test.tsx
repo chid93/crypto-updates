@@ -1,31 +1,23 @@
-import { render, screen, waitFor } from '../../utils/test-utils';
+import { render, screen, waitFor, act } from '../../utils/test-utils';
 import Toast from '.';
 import toastErrorProps from './mocks/props';
 import * as constants from '../../constants';
 
-const timeout = constants.TIMEOUT_AUTO_HIDE_DURATION + 5000;
-jest.setTimeout(timeout);
-
 describe('Toast', () => {
+  beforeAll(() => { jest.useFakeTimers(); })
+  afterAll(() => { jest.useRealTimers(); })
+
   beforeEach(() => {
     render(<Toast {...toastErrorProps} />);
   });
 
-  test('should show error message', async () => {
+  test('should show/hide error message', async () => {
     const toastElement = screen.getByTestId('Toast');
     expect(toastElement).toBeInTheDocument();
     const errorText = screen.getByText(constants.ERROR_MESSAGE);
     expect(errorText).toBeVisible();
-  });
-
-  test('should hide error message after auto hide duration', async () => {
-    const errorText = screen.getByText(constants.ERROR_MESSAGE);
-    expect(errorText).toBeVisible();
-    await waitFor(
-      () => {
-        expect(errorText).not.toBeVisible();
-      },
-      { timeout },
-    );
+    act(() => jest.advanceTimersByTime(constants.TIMEOUT_AUTO_HIDE_DURATION))
+   
+    await waitFor(() => expect(errorText).not.toBeVisible());
   });
 });
