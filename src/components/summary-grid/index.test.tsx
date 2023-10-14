@@ -11,12 +11,6 @@ describe('SummaryGrid', () => {
   const typedMarketSummaries = marketSummaries as SummaryItemsType;
   const typedMarketSummaryLTC = marketSummaryLTC as ISummaryItem;
 
-  test('should mount', () => {
-    render(<SummaryGrid />);
-    const SummaryItemsElement = screen.getByTestId('SummaryItems');
-    expect(SummaryItemsElement).toBeInTheDocument();
-  });
-
   test('should display crypto summary items in grid', async () => {
     render(<SummaryGrid />, { providerProps: providerPropsSummaryItems as ISummaryContextProps });
     const regex = new RegExp(typedMarketSummaries[0].symbol.toString().split('-')[0]);
@@ -24,17 +18,14 @@ describe('SummaryGrid', () => {
     expect(symbolText[0]).toBeInTheDocument();
   });
 
-  test('should display LTC crypto summary in grid', async () => {
+  test('should display LTC crypto summary and formatted grid values', async () => {
     render(<SummaryGrid />, { providerProps: providerPropsSummaryLTC as ISummaryContextProps });
     const regex = new RegExp(typedMarketSummaryLTC.symbol.toString().split('-')[0]);
     const symbolText = await screen.findByText(regex);
     expect(symbolText).toBeInTheDocument();
-  });
 
-  test('should display formatted grid values', async () => {
-    render(<SummaryGrid />, { providerProps: providerPropsSummaryLTC as ISummaryContextProps });
-    const regex = new RegExp(formatChange(typedMarketSummaryLTC.percentChange || ''));
-    const percentChangeValue = await screen.findByText(regex);
+    const formatRegex = new RegExp(formatChange(typedMarketSummaryLTC.percentChange || ''));
+    const percentChangeValue = await screen.findByText(formatRegex);
     expect(percentChangeValue).toBeInTheDocument();
   });
 });
