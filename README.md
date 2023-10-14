@@ -11,18 +11,17 @@
 ## Screenshots
 
 - Desktop
-  - ![image](https://github.com/chid93/crypto-updates/assets/9027740/1d4da6c5-ed7d-440c-b476-56dc2c968aae)
-  - ![image](https://github.com/chid93/crypto-updates/assets/9027740/0da9c9d9-7b67-4ed6-9599-6e895d6aebb0)
+  - ![image](https://github.com/chid93/crypto-updates/assets/9027740/711e531c-633c-4a28-9a5e-e95a5fc4807c)
+  - ![image](https://github.com/chid93/crypto-updates/assets/9027740/1432eb91-c39d-4924-952c-4600cb1c5a3f)
 
 - Mobile
-  - ![image](https://github.com/chid93/crypto-updates/assets/9027740/e0bfb03a-8ba3-407e-a985-df94c3a3d7be)
+  - ![image](https://github.com/chid93/crypto-updates/assets/9027740/6e8ad74a-d7cb-4a6a-a998-20b4521a5816)
 
 - Request cancellation to improve performance | Error toast message (displays at the bottom left corner)
   - ![image](https://github.com/chid93/crypto-updates/assets/9027740/100f2a72-8570-42c0-90e1-eb3130896c48)
 
 - Test coverage
-  - ![image](https://github.com/chid93/crypto-updates/assets/9027740/06430756-d5b0-4793-9e07-0e3c9c580d52)
-
+  - ![image](https://github.com/chid93/crypto-updates/assets/9027740/84a109c6-10f5-4832-9612-dba6581f4b4d)
 
 ## Available Scripts
 
