@@ -23,6 +23,7 @@ function SummaryGrid() {
     {
       field: 'symbol',
       headerName: 'Market',
+      minWidth: 120,
       maxWidth: 120,
       flex: 1,
       type: 'string',
