@@ -11,12 +11,8 @@ function useFetchSummaryItems(url: URL | string) {
   useEffect(() => {
     const controller = new AbortController();
     const { signal } = controller;
-    const cancelRequest = () => {
-      controller.abort();
-    };
 
-    // if url is empty (initial render), return.
-    if (!url) return cancelRequest;
+    if (!url) return undefined;
 
     const fetchData = async () => {
       setIsLoading(true);
@@ -43,7 +39,7 @@ function useFetchSummaryItems(url: URL | string) {
       }
     };
     fetchData();
-    return cancelRequest;
+    return () => { controller.abort() };
   }, [url, setIsLoading, setError, setSummaryItems]);
 
   return {
